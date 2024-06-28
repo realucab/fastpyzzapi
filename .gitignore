@@ -3,3 +3,22 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Carpetas y archivos a omitir al usar un ambiente virtual python (venv)
+pyvenv.cfg
+Scripts
+Scripts/
+share
+share/
+bin
+bin/
+Include
+Include/
+include
+include/
+Lib
+Lib/
+lib
+lib/
+lib64
+lib64/
