@@ -4,7 +4,7 @@ from .value_objects.id_ingrediente import IdIngrediente
 # from .domain_event import DomainEvent
 
 class Ingrediente:
-    def __init__(self, _idIngrediente: IdIngrediente, _nombreIngrediente: NombreIngrediente, _cantidadIngrediente: CantidadIngrediente):
+    def __init__(self, _idIngrediente: IdIngrediente, _nombreIngrediente: NombreIngrediente, _cantidadIngrediente: CantidadIngrediente): # type: ignore
         self._idIngrediente = _idIngrediente
         self._nombreIngrediente = _nombreIngrediente
         self._cantidadIngrediente = _cantidadIngrediente
@@ -26,6 +26,6 @@ class Ingrediente:
     def create(cls, idIngrediente, nombreIngrediente, cantidadIngrediente):
         return cls(
             idIngrediente=IdIngrediente.create(idIngrediente),
-            nombreIngrediente=NombreIngrediente.create(nombreIngrediente),
-            cantidadIngrediente=CantidadIngrediente.create(cantidadIngrediente)
+            nombreIngrediente=NombreIngrediente.create(nombreIngrediente), # type: ignore
+            cantidadIngrediente=CantidadIngrediente.create(cantidadIngrediente) # type: ignore
         )
