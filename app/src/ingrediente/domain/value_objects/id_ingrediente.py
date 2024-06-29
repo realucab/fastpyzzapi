@@ -12,5 +12,5 @@ class IdIngrediente(BaseModel):
         return self._id
 
     @staticmethod
-    def create(_id):
-        return IdIngrediente(_id)
+    def create(id):
+        return IdIngrediente(id)

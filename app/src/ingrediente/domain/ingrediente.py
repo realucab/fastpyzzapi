@@ -1,6 +1,8 @@
 from pydantic import BaseModel
 from typing import List
 from .value_objects.id_ingrediente import IdIngrediente
+from .value_objects.cantidad_ingrediente import CantidadIngrediente
+from .value_objects.nombre_ingrediente import NombreIngrediente
 # from .domain_event import DomainEvent
 
 class Ingrediente:
