@@ -1,16 +1,19 @@
+from typing import List
 from .value_objects.id_cliente import IdCliente
 from .value_objects.nombre_cliente import NombreCliente
 from .value_objects.cedula_cliente import NumeroCedula
 from .value_objects.email_cliente import EmailCliente
 from .value_objects.tlf_cliente import NumeroTelefono
+from uuid import UUID
 
 class Cliente:
-    def __init__(self, _idCliente: IdCliente, _nombreCliente: NombreCliente, _numeroCedula: NumeroCedula, _emailCliente: EmailCliente, _numeroTelefono: NumeroTelefono):
-        self._idCliente = _idCliente
-        self._nombreCliente = _nombreCliente
-        self._numeroCedula = _numeroCedula
-        self._emailCliente = _emailCliente
-        self._numeroTelefono = _numeroTelefono
+    
+    def __init__(self, idCliente: IdCliente, nombreCliente: NombreCliente, numeroCedula: NumeroCedula, emailCliente: EmailCliente, numeroTelefono: NumeroTelefono):
+        self._idCliente = idCliente
+        self._nombreCliente = nombreCliente
+        self._numeroCedula = numeroCedula
+        self._emailCliente = emailCliente
+        self._numeroTelefono = numeroTelefono
     
     @property
     def idCliente(self):
@@ -33,7 +36,7 @@ class Cliente:
         return self._numeroTelefono
     
     @classmethod
-    def create(cls, idCliente, nombreCliente, numeroCedula, emailCliente, numeroTelefono):
+    def create(cls, idCliente: UUID, nombreCliente: str, numeroCedula: int, emailCliente: str, numeroTelefono: int):
         return cls(
             idCliente=IdCliente.create(idCliente),
             nombreCliente=NombreCliente.create(nombreCliente),

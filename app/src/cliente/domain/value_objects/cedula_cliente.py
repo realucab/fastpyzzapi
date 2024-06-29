@@ -1,15 +1,14 @@
 from pydantic import BaseModel
 
-class NumeroCedula(BaseModel):
-    _cedula: int
+class NumeroCedula():
     
     def __init__(self, cedula: int):
         self._cedula = cedula
     
     @property
-    def name(self):
+    def cedula(self):
         return self._cedula
     
     @staticmethod
-    def create(cedula):
-        return NumeroCedula(cedula)
+    def create(cedula: int):
+        return NumeroCedula(cedula=cedula)

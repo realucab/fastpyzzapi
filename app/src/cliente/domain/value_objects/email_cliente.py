@@ -1,15 +1,14 @@
 from pydantic import BaseModel
 
-class EmailCliente(BaseModel):
-    _email: str
+class EmailCliente():
     
     def __init__(self, email: str):
         self._email = email
     
     @property
-    def name(self):
+    def email(self):
         return self._email
     
     @staticmethod
-    def create(email):
-        return EmailCliente(email)
+    def create(email: str):
+        return EmailCliente(email=email)

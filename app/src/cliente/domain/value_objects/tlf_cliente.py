@@ -1,15 +1,14 @@
 from pydantic import BaseModel
 
-class NumeroTelefono(BaseModel):
-    _tlf: int
+class NumeroTelefono():
     
     def __init__(self, tlf: int):
         self._tlf = tlf
     
     @property
-    def name(self):
+    def tlf(self):
         return self._tlf
     
     @staticmethod
-    def create(tlf):
-        return NumeroTelefono(tlf)
+    def create(tlf: int):
+        return NumeroTelefono(tlf=tlf)
