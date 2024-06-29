@@ -1,9 +1,11 @@
-from pydantic import BaseModel
-from typing import List
 from .value_objects.id_cliente import IdCliente
+from .value_objects.nombre_cliente import NombreCliente
+from .value_objects.cedula_cliente import NumeroCedula
+from .value_objects.email_cliente import EmailCliente
+from .value_objects.tlf_cliente import NumeroTelefono
 
 class Cliente:
-    def __init__(self, _idCliente: IdCliente, _nombreCliente: NombreCliente, _numeroCedula: NumeroCedula, _emailCliente: EmailCliente, _numeroTelefono: NumeroTelefono): # type: ignore
+    def __init__(self, _idCliente: IdCliente, _nombreCliente: NombreCliente, _numeroCedula: NumeroCedula, _emailCliente: EmailCliente, _numeroTelefono: NumeroTelefono):
         self._idCliente = _idCliente
         self._nombreCliente = _nombreCliente
         self._numeroCedula = _numeroCedula
@@ -34,8 +36,8 @@ class Cliente:
     def create(cls, idCliente, nombreCliente, numeroCedula, emailCliente, numeroTelefono):
         return cls(
             idCliente=IdCliente.create(idCliente),
-            nombreCliente=NombreCliente.create(nombreCliente), # type: ignore
-            numeroCedula=NumeroCedula.create(numeroCedula), # type: ignore
-            emailCliente=EmailCliente.create(emailCliente), # type: ignore
-            numeroTelefono=NumeroTelefono.create(numeroTelefono) # type: ignore
+            nombreCliente=NombreCliente.create(nombreCliente),
+            numeroCedula=NumeroCedula.create(numeroCedula),
+            emailCliente=EmailCliente.create(emailCliente),
+            numeroTelefono=NumeroTelefono.create(numeroTelefono)
         )
