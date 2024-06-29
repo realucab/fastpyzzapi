@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 
-class CantidadIngrediente(BaseModel):
-    _gramos: float
+class CantidadIngrediente:
 
     def __init__(self, gramos: float):
         self._gramos = gramos
@@ -11,5 +10,5 @@ class CantidadIngrediente(BaseModel):
         return self._gramos
     
     @staticmethod
-    def create(gramos):
-        return CantidadIngrediente(gramos)
+    def create(gramos: float):
+        return CantidadIngrediente(gramos=gramos)

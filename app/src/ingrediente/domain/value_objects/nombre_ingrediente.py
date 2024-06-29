@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 
-class NombreIngrediente(BaseModel):
-    _nombre: str
+class NombreIngrediente():
 
     def __init__(self, nombre: str):
         self._nombre = nombre
@@ -11,5 +10,5 @@ class NombreIngrediente(BaseModel):
         return self._nombre
     
     @staticmethod
-    def create(nombre):
-        return NombreIngrediente(nombre)
+    def create(nombre: str):
+        return NombreIngrediente(nombre=nombre)

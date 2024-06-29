@@ -1,16 +1,15 @@
 from pydantic import BaseModel
-from uuid import UUID4
+from uuid import UUID
 
-class IdIngrediente(BaseModel):
-    _id: UUID4
+class IdIngrediente:
 
-    def __init__(self, id: UUID4):
+    def __init__(self, id: UUID):
         self._id = id
 
     @property
-    def name(self):
+    def id(self):
         return self._id
 
     @staticmethod
-    def create(id):
-        return IdIngrediente(id)
+    def create(id: UUID):
+        return IdIngrediente(id=id)
