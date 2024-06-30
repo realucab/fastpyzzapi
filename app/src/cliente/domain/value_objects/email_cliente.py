@@ -1,6 +1,4 @@
-from pydantic import BaseModel
-
-class EmailCliente():
+class EmailCliente:
     
     def __init__(self, email: str):
         self._email = email

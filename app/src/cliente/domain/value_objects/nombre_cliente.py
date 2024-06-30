@@ -1,6 +1,4 @@
-from pydantic import BaseModel
-
-class NombreCliente():
+class NombreCliente:
     
     def __init__(self, nombre: str):
         self._nombre = nombre

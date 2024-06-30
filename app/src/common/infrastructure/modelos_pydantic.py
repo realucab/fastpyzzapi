@@ -42,6 +42,13 @@ class IngredienteModel(BaseModel):
     nombreIngrediente: str
     cantidadIngrediente: float
 
+class ClienteModel(BaseModel):
+    idCliente: UUID
+    nombreCliente: str
+    numeroCedula: int
+    emailCliente: str
+    numeroTelefono: int
+
 #class AlmacenModel(BaseModel):
 #    capacidadMaxima: CapacidadMaxima
 #    ingredientesAlmacen: List[Ingrediente]

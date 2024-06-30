@@ -6,6 +6,7 @@ from app.src.ingrediente.domain.value_objects.id_ingrediente import IdIngredient
 from app.src.ingrediente.domain.value_objects.cantidad_ingrediente import CantidadIngrediente
 from app.src.ingrediente.domain.value_objects.nombre_ingrediente import NombreIngrediente
 from app.src.ingrediente.domain.ingrediente import Ingrediente#, IngredienteModel
+from app.src.cliente.domain.cliente import Cliente
 from uuid import uuid4, UUID
 from app.src.almacen.domain.almacen import Almacen
 from app.src.common.infrastructure.modelos_pydantic import as_pydantic_model
@@ -51,3 +52,16 @@ async def get_almacen():
         almacen.agregarIngrediente(ingrediente)'''
 
     return almacen.to_dict()
+
+@router.get("/clientes/")
+@as_pydantic_model
+async def get_client():
+    # Create a new Cliente
+    cliente = Cliente.create(
+        idCliente=uuid4(),
+        nombreCliente="Example Client",
+        numeroCedula=28101010,
+        emailCliente="prueba@example.com",
+        numeroTelefono=584145556666
+    )
+    return cliente
