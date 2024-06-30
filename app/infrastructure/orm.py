@@ -19,4 +19,3 @@ class BookModel(Base):
 
 metadata = MetaData()
 Base.metadata.create_all(bind=engine)
-
