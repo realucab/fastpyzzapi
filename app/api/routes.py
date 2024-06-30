@@ -37,17 +37,18 @@ async def get_ingredient():
     return ingrediente#.to_model()
 
 @router.get("/almacen/")
+@as_pydantic_model
 async def get_almacen():
     # Create a new Almacen
     almacen = Almacen.create(capacidadMaxima=1000.0)
 
     # Create a few Ingredientes and add them to the Almacen
-    '''for _ in range(3):
+    for _ in range(3):
         ingrediente = Ingrediente.create(
             idIngrediente=uuid4(),
             nombreIngrediente="Example Ingredient",
             cantidadIngrediente=100.0
         )
-        almacen.agregarIngrediente(ingrediente)'''
+        almacen.agregarIngrediente(ingrediente)
 
-    return almacen.to_dict()
+    return almacen

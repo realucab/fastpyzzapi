@@ -42,6 +42,6 @@ class IngredienteModel(BaseModel):
     nombreIngrediente: str
     cantidadIngrediente: float
 
-#class AlmacenModel(BaseModel):
-#    capacidadMaxima: CapacidadMaxima
-#    ingredientesAlmacen: List[Ingrediente]
+class AlmacenModel(BaseModel):
+    capacidadMaxima: float
+    ingredientesAlmacen: List[str]

@@ -19,9 +19,14 @@ class Almacen:
     def create(cls, capacidadMaxima: float) -> 'Almacen':
         return cls(
             capacidadMaxima=CapacidadMaxima.create(capacidadMaxima),
-            ingredientesAlmacen=List[Ingrediente]
+            ingredientesAlmacen=[]
         )
     
-    @classmethod
     def agregarIngrediente(self, ingrediente: Ingrediente):
         self._ingredientesAlmacen.append(ingrediente)
+
+    def to_dict(self):
+        return {
+            "capacidadMaxima": self._capacidadMaxima.gramos,
+            "ingredientesAlmacen": [str(ingrediente.idIngrediente.id) for ingrediente in self._ingredientesAlmacen]
+        }
