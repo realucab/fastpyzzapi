@@ -10,6 +10,7 @@ from app.src.cliente.domain.cliente import Cliente
 from uuid import uuid4, UUID
 from app.src.almacen.domain.almacen import Almacen
 from app.src.common.infrastructure.modelos_pydantic import as_pydantic_model
+from app.src.platillo.domain.platillo import Platillo
 
 
 router = APIRouter()
@@ -66,3 +67,27 @@ async def get_client():
         numeroTelefono=584145556666
     )
     return cliente
+
+@router.get("/platillos/")
+@as_pydantic_model
+async def get_platillo():
+
+    ingredientes = []
+    for _ in range(3):
+        ingrediente = Ingrediente.create(
+            idIngrediente=uuid4(),
+            nombreIngrediente="Example Ingredient",
+            cantidadIngrediente=100.0
+        )
+        ingredientes.append(ingrediente)
+
+    platillo = Platillo.create(
+        idPlatillo=uuid4(),
+        nombrePlatillo="Example Platillo",
+        precioPlatillo=10.0,
+        descripcionPlatillo="This is an example platillo",
+        tipoPlatillo="PIZZA",
+        ingredientesPlatillo=ingredientes
+    )
+
+    return platillo
