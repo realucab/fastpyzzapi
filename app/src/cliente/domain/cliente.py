@@ -44,3 +44,12 @@ class Cliente:
             emailCliente=EmailCliente.create(emailCliente),
             numeroTelefono=NumeroTelefono.create(numeroTelefono)
         )
+    
+    def to_dict(self):
+        return {
+            'idCliente': str(self._idCliente.id),
+            'nombreCliente': self._nombreCliente.nombre,
+            'numeroCedula': self._numeroCedula.cedula,
+            'emailCliente': self._emailCliente.email,
+            'numeroTelefono': self._numeroTelefono.tlf
+        }

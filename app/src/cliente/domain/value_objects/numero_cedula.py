@@ -1,6 +1,4 @@
-from pydantic import BaseModel
-
-class NumeroCedula():
+class NumeroCedula:
     
     def __init__(self, cedula: int):
         self._cedula = cedula

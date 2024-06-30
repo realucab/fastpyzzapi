@@ -1,5 +1,3 @@
-from pydantic import BaseModel
-
 class CantidadIngrediente:
 
     def __init__(self, gramos: float):

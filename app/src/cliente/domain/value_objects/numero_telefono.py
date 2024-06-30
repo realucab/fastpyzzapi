@@ -1,6 +1,4 @@
-from pydantic import BaseModel
-
-class NumeroTelefono():
+class NumeroTelefono:
     
     def __init__(self, tlf: int):
         self._tlf = tlf

@@ -1,4 +1,3 @@
-from pydantic import BaseModel
 from typing import List
 from .value_objects.id_ingrediente import IdIngrediente
 from .value_objects.cantidad_ingrediente import CantidadIngrediente
