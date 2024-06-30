@@ -60,3 +60,10 @@ class PlatilloModel(BaseModel):
     descripcionPlatillo: str
     tipoPlatillo: str
     ingredientesPlatillo: List[str]
+
+class PedidoModel(BaseModel):
+    idPedido: UUID
+    idCliente: UUID
+    platillos: List[str]
+    estadoPedido: str
+    totalPedido: float

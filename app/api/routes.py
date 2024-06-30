@@ -11,6 +11,7 @@ from uuid import uuid4, UUID
 from app.src.almacen.domain.almacen import Almacen
 from app.src.common.infrastructure.modelos_pydantic import as_pydantic_model
 from app.src.platillo.domain.platillo import Platillo
+from app.src.pedido.domain.pedido import Pedido
 
 
 router = APIRouter()
@@ -51,7 +52,7 @@ async def get_almacen():
             nombreIngrediente="Example Ingredient",
             cantidadIngrediente=100.0
         )
-        almacen.agregarIngrediente(ingrediente)
+        almacen.agregarIngrediente(ingrediente.idIngrediente)
 
     return almacen
 
@@ -81,13 +82,58 @@ async def get_platillo():
         )
         ingredientes.append(ingrediente)
 
+    id_ingredientes = [ingrediente.idIngrediente for ingrediente in ingredientes]
+
     platillo = Platillo.create(
         idPlatillo=uuid4(),
         nombrePlatillo="Example Platillo",
         precioPlatillo=10.0,
         descripcionPlatillo="This is an example platillo",
         tipoPlatillo="PIZZA",
-        ingredientesPlatillo=ingredientes
+        ingredientesPlatillo=id_ingredientes
     )
 
     return platillo
+
+@router.get("/pedidos/")
+@as_pydantic_model
+async def get_platillo():
+
+    ingredientes = []
+    for _ in range(3):
+        ingrediente = Ingrediente.create(
+            idIngrediente=uuid4(),
+            nombreIngrediente="Example Ingredient",
+            cantidadIngrediente=100.0
+        )
+        ingredientes.append(ingrediente)
+
+    platillos = [Platillo.create(
+        idPlatillo=uuid4(),
+        nombrePlatillo="Example Platillo",
+        precioPlatillo=10.0,
+        descripcionPlatillo="This is an example platillo",
+        tipoPlatillo="PIZZA",
+        ingredientesPlatillo=ingredientes
+    )]
+
+    id_platillos = [platillo.idPlatillo for platillo in platillos]
+
+    cliente = Cliente.create(
+        idCliente=uuid4(),
+        nombreCliente="Example Client",
+        numeroCedula=28101010,
+        emailCliente="prueba@example.com",
+        numeroTelefono=584145556666
+    )
+
+    pedido = Pedido.create(
+        idPedido=uuid4(),
+        idCliente=cliente.idCliente.id,
+        platillos=id_platillos,
+        estadoPedido="CREADO",
+        totalPedido=10.0
+    )
+
+    return pedido
+
