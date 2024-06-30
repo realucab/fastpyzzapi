@@ -7,6 +7,8 @@ from app.src.ingrediente.domain.value_objects.cantidad_ingrediente import Cantid
 from app.src.ingrediente.domain.value_objects.nombre_ingrediente import NombreIngrediente
 from app.src.ingrediente.domain.ingrediente import Ingrediente#, IngredienteModel
 from uuid import uuid4, UUID
+from app.src.almacen.domain.almacen import Almacen
+from app.src.common.infrastructure.modelos_pydantic import as_pydantic_model
 
 
 router = APIRouter()
@@ -24,6 +26,7 @@ async def add_book(book: BookCreate, library_service: LibraryService = Depends(g
     return library_service.add_book(book)
 
 @router.get("/ingredientes/")
+@as_pydantic_model
 async def get_ingredient():
     # Create a new Ingrediente every time this function is called
     ingrediente = Ingrediente.create(
@@ -32,3 +35,19 @@ async def get_ingredient():
         cantidadIngrediente=100
     )
     return ingrediente#.to_model()
+
+@router.get("/almacen/")
+async def get_almacen():
+    # Create a new Almacen
+    almacen = Almacen.create(capacidadMaxima=1000.0)
+
+    # Create a few Ingredientes and add them to the Almacen
+    '''for _ in range(3):
+        ingrediente = Ingrediente.create(
+            idIngrediente=uuid4(),
+            nombreIngrediente="Example Ingredient",
+            cantidadIngrediente=100.0
+        )
+        almacen.agregarIngrediente(ingrediente)'''
+
+    return almacen.to_dict()

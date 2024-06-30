@@ -39,6 +39,13 @@ class Ingrediente:
             cantidadIngrediente=CantidadIngrediente.create(cantidadIngrediente)
         )
     
+    def to_dict(self):
+        return {
+            'idIngrediente': str(self._idIngrediente.id),
+            'nombreIngrediente': self._nombreIngrediente.nombre,
+            'cantidadIngrediente': self._cantidadIngrediente.gramos
+        }
+
     #def to_model(self):
     #    return IngredienteModel(
     #        idIngrediente=self.idIngrediente,

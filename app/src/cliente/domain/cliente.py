@@ -1,9 +1,9 @@
 from typing import List
 from .value_objects.id_cliente import IdCliente
 from .value_objects.nombre_cliente import NombreCliente
-from .value_objects.cedula_cliente import NumeroCedula
+from .value_objects.numero_cedula import NumeroCedula
 from .value_objects.email_cliente import EmailCliente
-from .value_objects.tlf_cliente import NumeroTelefono
+from .value_objects.numero_telefono import NumeroTelefono
 from uuid import UUID
 
 class Cliente:
