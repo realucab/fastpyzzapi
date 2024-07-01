@@ -13,7 +13,7 @@ class IngredienteOrm(Base):
     id_ingrediente = Column(UUID(as_uuid=True), primary_key=True)
     nombre_ingrediente = Column(String(50), nullable=False, unique=True)
     cantidad_ingrediente = Column(Float, CheckConstraint('cantidad_ingrediente >= 0'), nullable=False)
-    # almacen_id = Column(UUID(as_uuid=True), ForeignKey('almacen.id'))
+    # almacen_id = Column(UUID(as_uuid=True), ForeignKey('almacen.id_almacen'))
 
     # Relaciones:
     platillos = relationship('PlatilloOrm', secondary=platillo_ingrediente, back_populates='ingredientes')

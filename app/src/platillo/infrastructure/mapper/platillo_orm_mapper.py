@@ -15,8 +15,9 @@ class PlatilloOrm(Base):
     id_platillo = Column(UUID(as_uuid=True), primary_key=True)
     nombre_platillo = Column(String(50), nullable=False, unique=True)
     precio_platillo = Column(Float, CheckConstraint('precio_platillo >= 0'), nullable=False)
-    descripcion_platillo = Column(String(200), unique=True)
-    tipo_platillo = Column(Enum(TipoPlatillo), nullable=False, unique=True)
+    descripcion_platillo = Column(String(500), unique=True)
+    tipo_platillo = Column(Enum(TipoPlatillo), nullable=False)
 
     # Relaciones:
     ingredientes = relationship('IngredienteOrm', secondary=platillo_ingrediente, back_populates='platillos')
+    pedidos = relationship('PedidoOrm', secondary='pedido_platillo', back_populates='platillos')
