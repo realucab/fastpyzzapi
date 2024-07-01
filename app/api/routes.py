@@ -9,7 +9,7 @@ from app.src.ingrediente.domain.ingrediente import Ingrediente#, IngredienteMode
 from app.src.cliente.domain.cliente import Cliente
 from uuid import uuid4, UUID
 from app.src.almacen.domain.almacen import Almacen
-from app.src.common.infrastructure.modelos_pydantic import as_pydantic_model
+from app.src.common.infrastructure.modelos_pydantic import *
 from app.src.platillo.domain.platillo import Platillo
 from app.src.pedido.domain.pedido import Pedido
 
@@ -28,7 +28,7 @@ async def get_books(library_service: LibraryService = Depends(get_library_servic
 async def add_book(book: BookCreate, library_service: LibraryService = Depends(get_library_service)):
     return library_service.add_book(book)
 
-@router.get("/ingredientes/")
+@router.get("/ingredientes/", response_model=IngredienteModel)
 @as_pydantic_model
 async def get_ingredient():
     # Create a new Ingrediente every time this function is called
@@ -39,7 +39,7 @@ async def get_ingredient():
     )
     return ingrediente#.to_model()
 
-@router.get("/almacen/")
+@router.get("/almacen/", response_model=AlmacenModel)
 @as_pydantic_model
 async def get_almacen():
     # Create a new Almacen
@@ -56,7 +56,7 @@ async def get_almacen():
 
     return almacen
 
-@router.get("/clientes/")
+@router.get("/clientes/", response_model=ClienteModel)
 @as_pydantic_model
 async def get_client():
     # Create a new Cliente
@@ -69,7 +69,7 @@ async def get_client():
     )
     return cliente
 
-@router.get("/platillos/")
+@router.get("/platillos/", response_model=PlatilloModel)
 @as_pydantic_model
 async def get_platillo():
 
@@ -95,7 +95,7 @@ async def get_platillo():
 
     return platillo
 
-@router.get("/pedidos/")
+@router.get("/pedidos/", response_model=PedidoModel)
 @as_pydantic_model
 async def get_platillo():
 

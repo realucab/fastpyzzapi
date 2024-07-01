@@ -41,6 +41,7 @@ class IngredienteModel(BaseModel):
     idIngrediente: UUID
     nombreIngrediente: str
     cantidadIngrediente: float
+    eventos: List[str]
 
 class AlmacenModel(BaseModel):
     capacidadMaxima: float
@@ -67,3 +68,4 @@ class PedidoModel(BaseModel):
     platillos: List[str]
     estadoPedido: str
     totalPedido: float
+    eventos: List[str]
