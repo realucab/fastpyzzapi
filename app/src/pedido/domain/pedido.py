@@ -6,7 +6,7 @@ from app.src.platillo.domain.value_objects.id_platillo import IdPlatillo
 from .value_objects.id_pedido import IdPedido
 from .value_objects.estado_pedido import EstadoPedido
 from .value_objects.total_pedido import TotalPedido
-from app.src.common.domain.domain_event_interface import DomainEvent
+from app.src.common.domain.domain_event_abc import DomainEvent
 
 class Pedido:
     def __init__(self, idPedido: IdPedido, idCliente: IdCliente, platillos: List[IdPlatillo], estadoPedido: EstadoPedido, totalPedido: TotalPedido, eventos: List[DomainEvent]):

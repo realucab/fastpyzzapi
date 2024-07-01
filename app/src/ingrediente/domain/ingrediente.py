@@ -3,7 +3,7 @@ from .value_objects.id_ingrediente import IdIngrediente
 from .value_objects.cantidad_ingrediente import CantidadIngrediente
 from .value_objects.nombre_ingrediente import NombreIngrediente
 from uuid import UUID
-from app.src.common.domain.domain_event_interface import DomainEvent
+from app.src.common.domain.domain_event_abc import DomainEvent
 
 class Ingrediente:
 
