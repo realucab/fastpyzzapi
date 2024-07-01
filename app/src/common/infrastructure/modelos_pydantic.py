@@ -52,3 +52,18 @@ class ClienteModel(BaseModel):
     numeroCedula: int
     emailCliente: str
     numeroTelefono: int
+
+class PlatilloModel(BaseModel):
+    idPlatillo: UUID
+    nombrePlatillo: str
+    precioPlatillo: float
+    descripcionPlatillo: str
+    tipoPlatillo: str
+    ingredientesPlatillo: List[str]
+
+class PedidoModel(BaseModel):
+    idPedido: UUID
+    idCliente: UUID
+    platillos: List[str]
+    estadoPedido: str
+    totalPedido: float

@@ -1,9 +1,9 @@
 from typing import List
-from app.src.ingrediente.domain.ingrediente import Ingrediente
+from app.src.ingrediente.domain.value_objects.id_ingrediente import IdIngrediente
 from .value_objects.capacidad_maxima import CapacidadMaxima
 
 class Almacen:
-    def __init__(self, capacidadMaxima: CapacidadMaxima, ingredientesAlmacen: List[Ingrediente]):
+    def __init__(self, capacidadMaxima: CapacidadMaxima, ingredientesAlmacen: List[IdIngrediente]):
         self._capacidadMaxima = capacidadMaxima
         self._ingredientesAlmacen = ingredientesAlmacen
 
@@ -12,7 +12,7 @@ class Almacen:
         return self._capacidadMaxima
 
     @property
-    def ingredientes(self) -> List[Ingrediente]:
+    def ingredientes(self) -> List[IdIngrediente]:
         return self._ingredientesAlmacen
 
     @classmethod
@@ -22,11 +22,11 @@ class Almacen:
             ingredientesAlmacen=[]
         )
     
-    def agregarIngrediente(self, ingrediente: Ingrediente):
+    def agregarIngrediente(self, ingrediente: IdIngrediente):
         self._ingredientesAlmacen.append(ingrediente)
 
     def to_dict(self):
         return {
             "capacidadMaxima": self._capacidadMaxima.gramos,
-            "ingredientesAlmacen": [str(ingrediente.idIngrediente.id) for ingrediente in self._ingredientesAlmacen]
+            "ingredientesAlmacen": [str(ingrediente.id) for ingrediente in self._ingredientesAlmacen]
         }
