@@ -1,33 +1,38 @@
-# Proyecto de Ejemplo de DDD: Biblioteca Digital
+# Proyecto: fastpyzzapi (Gestión de restaurantes con fastAPI)
 
-Este proyecto de ejemplo utiliza el enfoque de Desarrollo Orientado al Dominio (DDD) para estructurar y organizar el código de una biblioteca digital. Primero vas a encontrar instrucciones para poner el proyecto en funcionamiento, a continuación se explica cómo se relacionan los conceptos de DDD con cada parte del código.
+Este proyecto utiliza el enfoque de Desarrollo Orientado al Dominio (DDD) para desarrollar el backend de un sistema de gestión para una pizzería. El sistema podrá ser utilizado por adminitradores, chefs y clientes de la pizzería para gestionar inventarios de ingredientes, elaborar menús, procesar pedidos de clientes y generar reportes diversos.
+
 
 # Instrucciones para Arrancar y Ejecutar el Proyecto
 
-Este documento proporciona una guía paso a paso para arrancar y ejecutar el proyecto de ejemplo de DDD de la Biblioteca Digital.
+Este documento proporciona una guía paso a paso para arrancar y ejecutar el proyecto de gestión de restaurantes con fasstAPI.
 
 ## Requisitos Previos
 
-Asegúrate de tener instalados los siguientes programas en tu sistema:
+Se deben tener instalados los siguientes programas:
 
-1. **Docker** - Puedes descargarlo e instalarlo desde [aquí](https://www.docker.com/get-started).
+1. **Docker** - Se puede descargar e instalar desde [aquí](https://www.docker.com/get-started).
 2. **Docker Compose** - Normalmente viene incluido con la instalación de Docker.
 
 ## Construir y Ejecutar el Proyecto con Docker Compose
-### Paso 1: Construir las Imágenes de Docker
-Construye las imágenes de Docker especificadas en el archivo docker-compose.yml:
+
+### Paso 1: Copiar y renombrar el archivo .env_template
+Cambiar el nombre del archivo .env_template a .env
+
+### Paso 2: Construir las Imágenes de Docker
+Abrir un terminal y construir las imágenes de Docker especificadas en el archivo `docker-compose.yml` utilizando el siguiente comando:
 ```bash
 docker compose build
 ```
-### Paso 2: Iniciar los Servicios
-Inicia los servicios definidos en el archivo `docker-compose.yml`:
+### Paso 3: Iniciar los Servicios
+Iniciar los servicios definidos en el archivo `docker-compose.yml` con el comando:
 ```bash
 docker compose up
 ```
-Este comando levantará los contenedores de la aplicación web y la base de datos SQLite. La aplicación web estará disponible en http://localhost:8000.
+Este comando levantará los contenedores de la aplicación web y la base de datos. La aplicación web estará disponible en http://localhost:8000.
 
 ## Probar la Aplicación
-Una vez que los contenedores estén en funcionamiento, puedes probar la aplicación utilizando un navegador web o herramientas como `curl` o `Postman`, o directamente con `Swagger`, que viene integrado en la aplicación, este último lo revisas en la dirección:
+Una vez que los contenedores estén en funcionamiento, se puede probar la aplicación utilizando un navegador web o herramientas como `curl` o `Postman`, o directamente con `Swagger`, que viene integrado en la aplicación, este último se puede revisar en la dirección:
 ```bash
 http://localhost:8000/docs
 ```
