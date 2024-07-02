@@ -2,7 +2,7 @@ from typing import List
 from .value_objects.id_ingrediente import IdIngrediente
 from .value_objects.cantidad_ingrediente import CantidadIngrediente
 from .value_objects.nombre_ingrediente import NombreIngrediente
-from uuid import UUID
+from uuid import UUID, uuid4
 from app.src.common.domain.domain_event_abc import DomainEvent
 
 class Ingrediente:
@@ -30,9 +30,9 @@ class Ingrediente:
         return self._eventos
 
     @classmethod
-    def create(cls, idIngrediente: UUID, nombreIngrediente: str, cantidadIngrediente: float):
+    def create(cls, nombreIngrediente: str, cantidadIngrediente: float):
         return cls(
-            idIngrediente=IdIngrediente.create(idIngrediente),
+            idIngrediente=uuid4(),
             nombreIngrediente=NombreIngrediente.create(nombreIngrediente),
             cantidadIngrediente=CantidadIngrediente.create(cantidadIngrediente),
             eventos=[]
@@ -43,7 +43,7 @@ class Ingrediente:
     
     def to_dict(self):
         return {
-            'idIngrediente': str(self._idIngrediente.id),
+            'idIngrediente': str(self._idIngrediente),
             'nombreIngrediente': self._nombreIngrediente.nombre,
             'cantidadIngrediente': self._cantidadIngrediente.gramos,
             'eventos': [str(evento.eventId) for evento in self._eventos]

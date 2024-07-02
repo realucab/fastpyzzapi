@@ -36,7 +36,6 @@ async def add_book(book: BookCreate, library_service: LibraryService = Depends(g
 async def get_ingredient(token: str = Depends(oauth2_scheme)):
     # Create a new Ingrediente every time this function is called
     ingrediente = Ingrediente.create(
-        idIngrediente=uuid4(),
         nombreIngrediente="Example Ingredient",
         cantidadIngrediente=100
     )
@@ -51,7 +50,6 @@ async def get_almacen(token: str = Depends(oauth2_scheme)):
     # Create a few Ingredientes and add them to the Almacen
     for _ in range(3):
         ingrediente = Ingrediente.create(
-            idIngrediente=uuid4(),
             nombreIngrediente="Example Ingredient",
             cantidadIngrediente=100.0
         )
@@ -64,7 +62,6 @@ async def get_almacen(token: str = Depends(oauth2_scheme)):
 async def get_client(token: str = Depends(oauth2_scheme)):
     # Create a new Cliente
     cliente = Cliente.create(
-        idCliente=uuid4(),
         nombreCliente="Example Client",
         numeroCedula=28101010,
         emailCliente="prueba@example.com",
@@ -79,7 +76,6 @@ async def get_platillo(token: str = Depends(oauth2_scheme)):
     ingredientes = []
     for _ in range(3):
         ingrediente = Ingrediente.create(
-            idIngrediente=uuid4(),
             nombreIngrediente="Example Ingredient",
             cantidadIngrediente=100.0
         )
@@ -88,7 +84,6 @@ async def get_platillo(token: str = Depends(oauth2_scheme)):
     id_ingredientes = [ingrediente.idIngrediente for ingrediente in ingredientes]
 
     platillo = Platillo.create(
-        idPlatillo=uuid4(),
         nombrePlatillo="Example Platillo",
         precioPlatillo=10.0,
         descripcionPlatillo="This is an example platillo",
@@ -105,14 +100,12 @@ async def get_pedido(token: str = Depends(oauth2_scheme)):
     ingredientes = []
     for _ in range(3):
         ingrediente = Ingrediente.create(
-            idIngrediente=uuid4(),
             nombreIngrediente="Example Ingredient",
             cantidadIngrediente=100.0
         )
         ingredientes.append(ingrediente)
 
     platillos = [Platillo.create(
-        idPlatillo=uuid4(),
         nombrePlatillo="Example Platillo",
         precioPlatillo=10.0,
         descripcionPlatillo="This is an example platillo",
@@ -123,7 +116,6 @@ async def get_pedido(token: str = Depends(oauth2_scheme)):
     id_platillos = [platillo.idPlatillo for platillo in platillos]
 
     cliente = Cliente.create(
-        idCliente=uuid4(),
         nombreCliente="Example Client",
         numeroCedula=28101010,
         emailCliente="prueba@example.com",
@@ -131,8 +123,7 @@ async def get_pedido(token: str = Depends(oauth2_scheme)):
     )
 
     pedido = Pedido.create(
-        idPedido=uuid4(),
-        idCliente=cliente.idCliente.id,
+        idCliente=cliente.idCliente,
         platillos=id_platillos,
         estadoPedido="CREADO",
         totalPedido=10.0

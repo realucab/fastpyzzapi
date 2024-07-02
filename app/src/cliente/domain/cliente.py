@@ -4,8 +4,7 @@ from .value_objects.nombre_cliente import NombreCliente
 from .value_objects.numero_cedula import NumeroCedula
 from .value_objects.email_cliente import EmailCliente
 from .value_objects.numero_telefono import NumeroTelefono
-from uuid import UUID
-
+from uuid import uuid4
 class Cliente:
     
     def __init__(self, idCliente: IdCliente, nombreCliente: NombreCliente, numeroCedula: NumeroCedula, emailCliente: EmailCliente, numeroTelefono: NumeroTelefono):
@@ -36,9 +35,9 @@ class Cliente:
         return self._numeroTelefono
     
     @classmethod
-    def create(cls, idCliente: UUID, nombreCliente: str, numeroCedula: int, emailCliente: str, numeroTelefono: int):
+    def create(cls, nombreCliente: str, numeroCedula: int, emailCliente: str, numeroTelefono: int):
         return cls(
-            idCliente=IdCliente.create(idCliente),
+            idCliente=uuid4(),
             nombreCliente=NombreCliente.create(nombreCliente),
             numeroCedula=NumeroCedula.create(numeroCedula),
             emailCliente=EmailCliente.create(emailCliente),
@@ -47,7 +46,7 @@ class Cliente:
     
     def to_dict(self):
         return {
-            'idCliente': str(self._idCliente.id),
+            'idCliente': str(self._idCliente),
             'nombreCliente': self._nombreCliente.nombre,
             'numeroCedula': self._numeroCedula.cedula,
             'emailCliente': self._emailCliente.email,

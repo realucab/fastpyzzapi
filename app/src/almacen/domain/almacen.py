@@ -28,5 +28,5 @@ class Almacen:
     def to_dict(self):
         return {
             "capacidadMaxima": self._capacidadMaxima.gramos,
-            "ingredientesAlmacen": [str(ingrediente.id) for ingrediente in self._ingredientesAlmacen]
+            "ingredientesAlmacen": [str(ingrediente) for ingrediente in self._ingredientesAlmacen]
         }

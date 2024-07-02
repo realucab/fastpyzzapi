@@ -7,6 +7,7 @@ from .value_objects.descripcion_platillo import DescripcionPlatillo
 from .value_objects.precio_platillo import PrecioPlatillo
 from .value_objects.nombre_platillo import NombrePlatillo
 from .value_objects.id_platillo import IdPlatillo
+from uuid import uuid4
 
 class Platillo:
     def __init__(self, idPlatillo: IdPlatillo, nombrePlatillo: NombrePlatillo, precioPlatillo: PrecioPlatillo, descripcionPlatillo: DescripcionPlatillo, tipoPlatillo: TipoPlatillo, ingredientesPlatillo: List[IdIngrediente]):
@@ -42,9 +43,9 @@ class Platillo:
         return self._ingredientesPlatillo
 
     @classmethod
-    def create(cls, idPlatillo: UUID, nombrePlatillo: str, precioPlatillo: float, descripcionPlatillo: str, tipoPlatillo: str, ingredientesPlatillo: List[IdIngrediente]) -> 'Platillo':
+    def create(cls, nombrePlatillo: str, precioPlatillo: float, descripcionPlatillo: str, tipoPlatillo: str, ingredientesPlatillo: List[IdIngrediente]) -> 'Platillo':
         return cls(
-            idPlatillo=IdPlatillo.create(idPlatillo),
+            idPlatillo=uuid4(),
             nombrePlatillo=NombrePlatillo.create(nombrePlatillo),
             precioPlatillo=PrecioPlatillo.create(precioPlatillo),
             descripcionPlatillo=DescripcionPlatillo.create(descripcionPlatillo),
@@ -57,10 +58,10 @@ class Platillo:
 
     def to_dict(self):
         return {
-            'idPlatillo': str(self._idPlatillo.id),
+            'idPlatillo': str(self._idPlatillo),
             'nombrePlatillo': self._nombrePlatillo.nombre,
             'precioPlatillo': self._precioPlatillo.precio,
             'descripcionPlatillo': self._descripcionPlatillo.descripcion,
             'tipoPlatillo': self._tipoPlatillo.value,
-            'ingredientesPlatillo': [str(ingrediente.id) for ingrediente in self._ingredientesPlatillo]
+            'ingredientesPlatillo': [str(ingrediente) for ingrediente in self._ingredientesPlatillo]
         }

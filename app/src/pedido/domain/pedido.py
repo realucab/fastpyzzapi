@@ -8,6 +8,7 @@ from .value_objects.estado_pedido import EstadoPedido
 from .value_objects.total_pedido import TotalPedido
 from app.src.common.domain.domain_event_abc import DomainEvent
 from datetime import datetime
+from uuid import uuid4
 
 class Pedido:
     def __init__(self, idPedido: IdPedido, idCliente: IdCliente, platillos: List[IdPlatillo], estadoPedido: EstadoPedido, totalPedido: TotalPedido, eventos: List[DomainEvent], fechaPedido: datetime):
@@ -48,9 +49,9 @@ class Pedido:
         return self._fechaPedido
     
     @classmethod
-    def create(cls, idPedido: UUID, idCliente: IdCliente, platillos: List[IdPlatillo], estadoPedido: str, totalPedido: float) -> 'Pedido':
+    def create(cls, idCliente: IdCliente, platillos: List[IdPlatillo], estadoPedido: str, totalPedido: float) -> 'Pedido':
         return cls(
-            idPedido=IdPedido.create(idPedido),
+            idPedido=uuid4(),
             idCliente=idCliente,
             platillos=platillos,
             estadoPedido=EstadoPedido.create(estadoPedido),
@@ -67,9 +68,9 @@ class Pedido:
 
     def to_dict(self):
         return {
-            'idPedido': str(self._idPedido.id),
+            'idPedido': str(self._idPedido),
             'idCliente': str(self._idCliente),
-            'platillos': [str(platillo.id) for platillo in self._platillos],
+            'platillos': [str(platillo) for platillo in self._platillos],
             'estadoPedido': self._estadoPedido.value,
             'totalPedido': self._totalPedido.value,
             'eventos': [str(evento.eventoId) for evento in self.eventos],
