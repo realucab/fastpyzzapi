@@ -12,9 +12,12 @@ from app.src.almacen.domain.almacen import Almacen
 from app.src.common.infrastructure.modelos_pydantic import *
 from app.src.platillo.domain.platillo import Platillo
 from app.src.pedido.domain.pedido import Pedido
-
+from app.src.common.infrastructure.auth import user_dependency
+from fastapi.security import OAuth2PasswordBearer
 
 router = APIRouter()
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/token")
 
 async def get_library_service():
     repository = SQLAlchemyBookRepository()
@@ -30,7 +33,7 @@ async def add_book(book: BookCreate, library_service: LibraryService = Depends(g
 
 @router.get("/ingredientes/", response_model=IngredienteModel)
 @as_pydantic_model
-async def get_ingredient():
+async def get_ingredient(token: str = Depends(oauth2_scheme)):
     # Create a new Ingrediente every time this function is called
     ingrediente = Ingrediente.create(
         idIngrediente=uuid4(),
@@ -41,7 +44,7 @@ async def get_ingredient():
 
 @router.get("/almacen/", response_model=AlmacenModel)
 @as_pydantic_model
-async def get_almacen():
+async def get_almacen(token: str = Depends(oauth2_scheme)):
     # Create a new Almacen
     almacen = Almacen.create(capacidadMaxima=1000.0)
 
@@ -58,7 +61,7 @@ async def get_almacen():
 
 @router.get("/clientes/", response_model=ClienteModel)
 @as_pydantic_model
-async def get_client():
+async def get_client(token: str = Depends(oauth2_scheme)):
     # Create a new Cliente
     cliente = Cliente.create(
         idCliente=uuid4(),
@@ -71,7 +74,7 @@ async def get_client():
 
 @router.get("/platillos/", response_model=PlatilloModel)
 @as_pydantic_model
-async def get_platillo():
+async def get_platillo(token: str = Depends(oauth2_scheme)):
 
     ingredientes = []
     for _ in range(3):
@@ -97,7 +100,7 @@ async def get_platillo():
 
 @router.get("/pedidos/", response_model=PedidoModel)
 @as_pydantic_model
-async def get_platillo():
+async def get_pedido(token: str = Depends(oauth2_scheme)):
 
     ingredientes = []
     for _ in range(3):

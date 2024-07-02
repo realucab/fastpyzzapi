@@ -17,4 +17,4 @@ class PedidoOrm(Base):
           
         # Relaciones:
         clientes = relationship('ClienteOrm', back_populates='pedidos')
-        platillos = relationship('PlatilloOrm', secondary='pedido_platillo', back_populates='pedido')
+        platillos = relationship('PlatilloOrm', secondary='pedido_platillo', back_populates='pedidos')
