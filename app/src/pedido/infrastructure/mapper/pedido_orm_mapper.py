@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Float, CheckConstraint, Enum, ForeignKey
+from sqlalchemy import Column, Float, CheckConstraint, Enum, ForeignKey, DateTime
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from app.src.common.infrastructure.sqlalchemy_base import Base
@@ -14,6 +14,7 @@ class PedidoOrm(Base):
         id_cliente = Column(UUID(as_uuid=True), ForeignKey('cliente.id_cliente'))
         estado_pedido = Column(Enum(EstadoPedido), nullable=False)
         total_pedido = Column(Float, CheckConstraint('total_pedido >= 0'), nullable=False)
+        fecha_pedido = Column(DateTime, nullable=False)
           
         # Relaciones:
         clientes = relationship('ClienteOrm', back_populates='pedidos')

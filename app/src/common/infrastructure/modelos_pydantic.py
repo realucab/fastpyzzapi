@@ -2,28 +2,7 @@ from pydantic import BaseModel
 from uuid import UUID
 from typing import List
 from functools import wraps
-
-'''def as_pydantic_model(func):
-    @wraps(func)
-    async def wrapper(*args, **kwargs):
-        result = await func(*args, **kwargs)
-        # Get the Pydantic model class based on the class name of the domain object
-        pydantic_model = globals()[result.__class__.__name__ + "Model"]
-        # Convert the domain object to a Pydantic model
-        # Remove the leading underscore from attribute names
-        data = {k.lstrip('_'): v.dict() if hasattr(v, 'dict') else v for k, v in result.__dict__.items()}
-        return pydantic_model(**data)
-    return wrapper
-
-def as_pydantic_model(func):
-    @wraps(func)
-    async def wrapper(*args, **kwargs):
-        result = await func(*args, **kwargs)
-        # Get the Pydantic model class based on the class name of the domain object
-        pydantic_model = globals()[result.__class__.__name__ + "Model"]
-        # Convert the domain object to a Pydantic model
-        return pydantic_model(**result.__dict__)
-    return wrapper'''
+from datetime import datetime
 
 def as_pydantic_model(func):
     @wraps(func)
@@ -69,3 +48,4 @@ class PedidoModel(BaseModel):
     estadoPedido: str
     totalPedido: float
     eventos: List[str]
+    fechaPedido: datetime

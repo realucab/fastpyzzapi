@@ -42,7 +42,7 @@ async def create_user(db: db_dependency, create_user_request: CreateUserRequest)
     create_user_model = UserOrm(
         user_id=uuid4(),
         username=create_user_request.username,
-        hashed_password=hashed_password
+        hashed_password=hashed_password.decode()
     )
 
     db.add(create_user_model)
