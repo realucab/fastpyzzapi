@@ -12,6 +12,7 @@ from app.src.pedido.infrastructure.mapper.pedido_orm_mapper import PedidoOrm
 from app.src.pedido.infrastructure.mapper.pedido_platillo_association import pedido_platillo
 from app.src.common.infrastructure.auth import router as auth_router, db_dependency, user_dependency
 from app.src.ingrediente.infrastructure.ingrediente_controller import router as ingredientes_router
+from app.src.platillo.infrastructure.platillo_controller import router as platillos_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -23,6 +24,7 @@ def get_application():
     app.include_router(router)
     app.include_router(auth_router)
     app.include_router(ingredientes_router)
+    app.include_router(platillos_router)
     return app
 
 app = get_application()
