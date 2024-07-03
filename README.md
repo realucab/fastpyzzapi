@@ -1,6 +1,6 @@
 # Proyecto: fastpyzzapi (Gestión de restaurantes con fastAPI)
 
-Este proyecto utiliza el enfoque de Desarrollo Orientado al Dominio (DDD) para desarrollar el backend de un sistema de gestión para una pizzería. El sistema podrá ser utilizado por adminitradores, chefs y clientes de la pizzería para gestionar inventarios de ingredientes, elaborar menús, procesar pedidos de clientes y generar reportes diversos.
+Este proyecto utiliza el enfoque de Desarrollo Orientado al Dominio (DDD) para desarrollar el backend de un sistema de gestión para una pizzería. El sistema podrá ser utilizado por administradores, chefs y clientes de la pizzería para gestionar inventarios de ingredientes, elaborar menús, procesar pedidos de clientes y generar reportes diversos.
 
 En nuestro enfoque, determinamos que el mejor punto de comienzo fue la elaboración de un diagrama de dominio que siga al pie de la letra lo que hace un buen Diseño Orientado al Dominio (DDD), incluyendo agregados, entidades, objetos de valor, enums, servicios de dominio, eventos de dominio, así como interfaces para los repositorios de acceso a estas entidades. Cabe notar que se procuró mantener el dominio puro, libre de detalles de infraestructura; justo para eso es que usamos patrones de diseño, para colaborar con las entidades. Algunos de estos patrones son: Repositorio, Observador (para los eventos publicados), Factory (para la creación de agregados).
 
