@@ -44,3 +44,7 @@ Una vez que los contenedores estén en funcionamiento, se puede probar la aplica
 ```bash
 http://localhost:8000/docs
 ```
+
+## Integrantes:
+* Andueza Ricardo
+* Brito Angely
