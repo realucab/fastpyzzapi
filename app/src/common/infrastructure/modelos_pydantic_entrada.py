@@ -16,4 +16,4 @@ class ClienteEntryModel(BaseModel):
     nombre_cliente: str = Field(..., example="Kvothe")
     numero_cedula: int = Field(..., example=39000555)
     email_cliente: str = Field(..., example="estudiante@est.ucab.edu.ve")
-    numero_telefono: int = Field(..., example=04349997777)
+    numero_telefono: int = Field(..., example=4149997777)

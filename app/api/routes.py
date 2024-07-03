@@ -1,13 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException
-from app.domain.services import LibraryService
-from app.domain.schemas import BookCreate, Book
-from app.infrastructure.repositories_impl import SQLAlchemyBookRepository
+from fastapi import APIRouter, Depends
 from app.src.ingrediente.domain.value_objects.id_ingrediente import IdIngrediente
 from app.src.ingrediente.domain.value_objects.cantidad_ingrediente import CantidadIngrediente
 from app.src.ingrediente.domain.value_objects.nombre_ingrediente import NombreIngrediente
-from app.src.ingrediente.domain.ingrediente import Ingrediente#, IngredienteModel
+from app.src.ingrediente.domain.ingrediente import Ingrediente
 from app.src.cliente.domain.cliente import Cliente
-from uuid import uuid4, UUID
 from app.src.almacen.domain.almacen import Almacen
 from app.src.common.infrastructure.modelos_pydantic import *
 from app.src.platillo.domain.platillo import Platillo
@@ -18,18 +14,6 @@ from fastapi.security import OAuth2PasswordBearer
 router = APIRouter()
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/token")
-
-async def get_library_service():
-    repository = SQLAlchemyBookRepository()
-    return LibraryService(repository)
-
-@router.get("/books/", response_model=list[Book])
-async def get_books(library_service: LibraryService = Depends(get_library_service)):
-    return library_service.get_all_books()
-
-@router.post("/books/", response_model=Book)
-async def add_book(book: BookCreate, library_service: LibraryService = Depends(get_library_service)):
-    return library_service.add_book(book)
 
 @router.get("/ingredientes/", response_model=IngredienteModel)
 @as_pydantic_model
