@@ -1,7 +1,6 @@
 from ...domain.repository.ingrediente_interfaz_repositorio import IngredienteInterfazRepositorio
 from ...domain.ingrediente import Ingrediente
 from ..mapper.ingrediente_orm_mapper import IngredienteOrm
-from typing import Type, Annotated
 import logging
 from sqlalchemy.orm import Session
 
