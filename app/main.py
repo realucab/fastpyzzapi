@@ -13,6 +13,7 @@ from app.src.common.infrastructure.auth import router as auth_router, db_depende
 from app.src.ingrediente.infrastructure.ingrediente_controller import router as ingredientes_router
 from app.src.platillo.infrastructure.platillo_controller import router as platillos_router
 from app.src.cliente.infrastructure.cliente_controller import router as clientes_router
+from app.src.pedido.infrastructure.pedido_controller import router as pedidos_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -26,6 +27,7 @@ def get_application():
     app.include_router(ingredientes_router)
     app.include_router(platillos_router)
     app.include_router(clientes_router)
+    app.include_router(pedidos_router)
     return app
 
 app = get_application()

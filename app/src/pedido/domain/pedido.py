@@ -49,12 +49,12 @@ class Pedido:
         return self._fechaPedido
     
     @classmethod
-    def create(cls, idCliente: IdCliente, platillos: List[IdPlatillo], estadoPedido: str, totalPedido: float) -> 'Pedido':
+    def create(cls, idCliente: IdCliente, platillos: List[IdPlatillo], totalPedido: float, estadoPedido: EstadoPedido = EstadoPedido.CREADO) -> 'Pedido':
         return cls(
             idPedido=uuid4(),
             idCliente=idCliente,
             platillos=platillos,
-            estadoPedido=EstadoPedido.create(estadoPedido),
+            estadoPedido=estadoPedido,
             totalPedido=TotalPedido.create(totalPedido),
             eventos=[],
             fechaPedido=datetime.now()

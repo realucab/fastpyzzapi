@@ -1,5 +1,8 @@
 from ...domain.repository.ingrediente_interfaz_repositorio import IngredienteInterfazRepositorio
 from ...domain.ingrediente import Ingrediente
+'''from ...domain.value_objects.id_ingrediente import IdIngrediente
+from ...domain.value_objects.cantidad_ingrediente import CantidadIngrediente
+from ...domain.value_objects.nombre_ingrediente import NombreIngrediente'''
 from ..mapper.ingrediente_orm_mapper import IngredienteOrm
 import logging
 from sqlalchemy.orm import Session
@@ -29,3 +32,12 @@ class IngredienteRepositorio(IngredienteInterfazRepositorio):
         self._db.commit()
 
         return nuevoIngrediente
+    
+    '''def traerTodos(self):
+        todosLosIngredientes = self._db.query(IngredienteOrm).all()
+        return [Ingrediente(
+            idIngrediente=IdIngrediente(ingredienteOrm.id_ingrediente),
+            nombreIngrediente=NombreIngrediente(ingredienteOrm.nombre_ingrediente),
+            cantidadIngrediente=CantidadIngrediente(ingredienteOrm.cantidad_ingrediente),
+            eventos=[]
+        ) for ingredienteOrm in todosLosIngredientes]'''

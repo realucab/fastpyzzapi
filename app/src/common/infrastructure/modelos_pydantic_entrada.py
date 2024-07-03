@@ -17,3 +17,8 @@ class ClienteEntryModel(BaseModel):
     numero_cedula: int = Field(..., example=39000555)
     email_cliente: str = Field(..., example="estudiante@est.ucab.edu.ve")
     numero_telefono: int = Field(..., example=4149997777)
+
+class PedidoEntryModel(BaseModel):
+    platillos: list[str] = Field(..., example=["e74562d3-8f20-46a6-b565-4fa2c610e63f",
+                                               "6ce504c3-f9ac-4e01-a328-201a2e1b00d7"])
+    total_pedido: float = Field(..., example=20.5)

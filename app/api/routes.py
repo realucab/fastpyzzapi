@@ -109,7 +109,6 @@ async def get_pedido(token: str = Depends(oauth2_scheme)):
     pedido = Pedido.create(
         idCliente=cliente.idCliente,
         platillos=id_platillos,
-        estadoPedido="CREADO",
         totalPedido=10.0
     )
 

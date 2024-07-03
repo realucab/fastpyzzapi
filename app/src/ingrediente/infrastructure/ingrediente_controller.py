@@ -22,3 +22,10 @@ async def get_ingredient(db: db_dependency, ingredienteData: IngredienteEntryMod
     ingrediente_repo = IngredienteRepositorio(db)
     nuevoIngrediente = ingrediente_repo.insertar(ingredienteData)
     return nuevoIngrediente
+
+'''@router.get("/", response_model=List[IngredienteModel])
+@as_pydantic_model
+async def get_ingredient_list(db: db_dependency, token: str = Depends(oauth2_scheme)):
+    ingrediente_repo = IngredienteRepositorio(db)
+    todosLosIngredientes = ingrediente_repo.traerTodos()
+    return todosLosIngredientes'''
