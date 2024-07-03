@@ -1,4 +1,4 @@
-# Proyecto: fastpyzzapi (Gestión de restaurantes con fastAPI)
+# Proyecto: fastpyzzapi (Gestión de restaurantes con FastAPI)
 
 Este proyecto utiliza el enfoque de Desarrollo Orientado al Dominio (DDD) para desarrollar el backend de un sistema de gestión para una pizzería. El sistema podrá ser utilizado por administradores, chefs y clientes de la pizzería para gestionar inventarios de ingredientes, elaborar menús, procesar pedidos de clientes y generar reportes diversos.
 
@@ -12,6 +12,12 @@ Los diferentes servicios permiten al usuario, dependiendo de su tipo de usuario,
 
 ![alt text](<Diagrama Dominio Python.drawio.png>)
 
+Para el mapping de las entidades de dominio a la base de datos PostgreSQL, y para realizar consultas e insertar datos en la misma, se utilizó SQLalchemy, que otorga fácil integración con FastAPI
+y permite crear modelos sencillos de tablas y columnas para llevar a persistencia nuestros objetos del dominio.
+
+![ER fastpyzzapi](https://github.com/realucab/fastpyzzapi/assets/106932816/5607b3f3-ef21-44d3-922e-029fe1308322)
+
+
 
 # Instrucciones para Arrancar y Ejecutar el Proyecto
 
@@ -24,10 +30,12 @@ Se deben tener instalados los siguientes programas:
 1. **Docker** - Se puede descargar e instalar desde [aquí](https://www.docker.com/get-started).
 2. **Docker Compose** - Normalmente viene incluido con la instalación de Docker.
 
+Se debe clonar el repositorio directamente desde la rama main.
+
 ## Construir y Ejecutar el Proyecto con Docker Compose
 
 ### Paso 1: Copiar y renombrar el archivo .env_template
-Cambiar el nombre del archivo .env_template a .env
+Cambiar el nombre del archivo .env_template, hallado en la raiz del proyecto, a .env
 
 ### Paso 2: Construir las Imágenes de Docker
 Abrir un terminal y construir las imágenes de Docker especificadas en el archivo `docker-compose.yml` utilizando el siguiente comando:
@@ -46,6 +54,10 @@ Una vez que los contenedores estén en funcionamiento, se puede probar la aplica
 ```bash
 http://localhost:8000/docs
 ```
+
+Es importante notar que al usar la aplicación mediante a Swagger UI en su navegador, registre primero su usuario con el endpoint /auth/ "Create User", y luego 
+hacer click en el botón arriba a la derecha de la interfaz para autorizar su usuario y recibir un token válido por 20 minutos (cambiable en el módulo de auth),
+para así proceder a usar el resto de las rutas con su usuario.
 
 ## Integrantes:
 * Andueza Ricardo
