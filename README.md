@@ -6,6 +6,8 @@ En nuestro enfoque, determinamos que el mejor punto de comienzo fue la elaboraci
 
 Mediante el uso de la interfaz Swagger UI de FastAPI, interactuamos con las distintas rutas, algunas con acceso a la base de datos PostgreSQL, y otras no... Todas las rutas están protegidas por autorización y autenticación usando librerías de hashing para almacenar las contraseñas junto a sus usuarios en la BD, y usando tokens JWT para las sesiones verificadas del usuario, con un plazo de expiración predefinido.
 
+Todos los datos de entrada y salida de los endpoints se validan usando Pydantic, y el Decorador @as_pydantic_model transforma dinámicamente los objetos del dominio en sus respectivos modelos para salida del endpoint.
+
 Los diferentes servicios permiten al usuario, dependiendo de su tipo de usuario, insertar datos para la administración de la pizzería, así como servicio de órdenes del menú para los clientes.
 
 ![alt text](<Diagrama Dominio Python.drawio.png>)
