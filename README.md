@@ -47,4 +47,5 @@ http://localhost:8000/docs
 
 ## Integrantes:
 * Andueza Ricardo
+* Ascanio Paola
 * Brito Angely
